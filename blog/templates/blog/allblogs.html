@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+
+  <title>Vaalser Blog</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <!-- Favicons -->
+  <link rel="icon" href="{% static 'vaalser.png' %}" sizes="16x16 32x32" type="image/png">
+
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">Die Vaalser</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link active" href="{% url 'allblogs' %}" >Blog</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="py-0 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Vaalser Tagebuch</h1>
+        <p class="lead text-body-secondary">Chaos inklusive... </p>
+      </div>
+    </div>
+    {% for blog in blogs.all %}
+
+    <a href="{% url 'detail' blog.id %}">
+      <h3> {{ blog.title }} </h3>
+    </a>
+    {{ blog.pub_date }}
+    <br />
+    <img class="img-fluid" src="{{ blog.image.url }}" width="250" height="250">
+    <br />
+    <p> {{ blog.summary }} </p>
+
+    {% endfor %}
+  </section>
+</main>
+
+<footer class="text-body-secondary py-5">
+  <div class="container text-center">
+    <p> ©️ Carsten Starke {% now "Y" %}</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

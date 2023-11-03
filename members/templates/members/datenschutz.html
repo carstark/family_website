@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <title>Datenschutz</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+        crossorigin="anonymous">
+
+  <!-- Favicons -->
+  <link rel="icon" href="{% static 'vaalser.png' %}" sizes="16x16 32x32" type="image/png">
+
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">Die Vaalser</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+          <a class="nav-link" href="{% url 'impressum' %}">Impressum</a>
+          <a class="nav-link" href="{% url 'datenschutz' %}">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="py-0 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto" align="justify">
+        <h1 class="fw-light" align="center">Datenschutz</h1>
+        <br />
+        <p class="lead text-body-secondary">Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+        <p class="lead text-body-secondary">Die Nutzung unserer Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.</p>
+        <p class="lead text-body-secondary">Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
+        <br />
+        <h4 class="fw-light">Widerspruch Werbe-Mails</h4>
+        <p class="lead text-body-secondary">Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-E-Mails, vor.</p>
+        <br />
+        <p class="lead text-body-secondary">Quelle:
+          <a href="https://www.e-recht24.de/" class="lead text-body-secondary" target="_blank" rel="noopener noreferrer">e-recht24.de</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="text-body-secondary py-5">
+  <div class="container text-center">
+    <p> ©️ Carsten Starke {% now "Y" %}</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

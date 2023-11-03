@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <title>Die Vaalser</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+        crossorigin="anonymous">
+
+  <!-- Favicons -->
+  <link rel="icon" href="{% static 'vaalser.png' %}" sizes="16x16 32x32" type="image/png">
+
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">Die Vaalser</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+          <a class="nav-link" href="{% url 'impressum' %}">Impressum</a>
+          <a class="nav-link" href="{% url 'datenschutz' %}">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="py-0 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Willkommen auf unserer Seite!</h1>
+        <p class="lead text-body-secondary">Und wenn ihr was zu melden habt,... </p>
+          <a href="mailto:cstarke75@gmail.com
+          ?subject=Meldung auf Schreibt Uns!
+          &body=Hallo Vaalser," class="btn btn-primary my-2">Schreibt Uns!</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-body-tertiary">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for member in members.all %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img class="card-img-top" src="{{ member.image.url }}">
+            <div class="card-body">
+              <h1 class="card-text text-center">{{ member.full_name }}</h1>
+              <p class="card-text text-center">{{ member.abstract }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-body-secondary py-5">
+  <div class="container text-center">
+    <p> ©️ Carsten Starke {% now "Y" %}</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

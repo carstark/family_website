@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <title>Impressum</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+        crossorigin="anonymous">
+
+  <!-- Favicons -->
+  <link rel="icon" href="{% static 'vaalser.png' %}" sizes="16x16 32x32" type="image/png">
+
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">Die Vaalser</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+          <a class="nav-link" href="{% url 'impressum' %}">Impressum</a>
+          <a class="nav-link" href="{% url 'datenschutz' %}">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="py-0 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto" align="justify">
+        <h1 class="fw-light" align="center">Impressum</h1>
+        <br />
+        <h4 class="fw-light">Angaben gemäß § 5 TMG</h4>
+        <p class="lead text-body-secondary">Familie Starke<br>Bronnenstraat 14<br>6291VM Vaals<br>Niederlande</p>
+        <br />
+        <h4 class="fw-light">Kontakt</h4>
+        <p class="lead text-body-secondary">Festnetz Niederlande: +31 (0) 43 306 5789<br>Email:
+          <a href="mailto:starcar@web.de
+          ?subject=Meldung auf Impressum!
+          &body=" class="lead text-body-secondary">starcar@web.de</a>
+        </p>
+        <br />
+        <h4 class="fw-light">Haftung für Inhalte</h4>
+        <p class="lead text-body-secondary" align="justify">Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+        <p class="lead text-body-secondary" align="justify">Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+        <br />
+        <h4 class="fw-light">Haftung für Links</h4>
+        <p class="lead text-body-secondary" align="justify">Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.</p>
+        <p class="lead text-body-secondary" align="justify">Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+        <br />
+        <h4 class="fw-light">Urheberrecht</h4>
+        <p class="lead text-body-secondary" align="justify">Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
+        <p class="lead text-body-secondary" align="justify">Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+        <br />
+        <p class="lead text-body-secondary">Quelle:
+          <a href="https://www.e-recht24.de/" class="lead text-body-secondary" target="_blank" rel="noopener noreferrer">e-recht24.de</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="text-body-secondary py-5">
+  <div class="container text-center">
+    <p> ©️ Carsten Starke {% now "Y" %}</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
