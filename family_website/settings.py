@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-c!kua)=@jy3hx=9m6mm!u1di-s^to!9#a2_x20v__f8d=6n6)m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cstarke75.eu.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -74,16 +74,6 @@ WSGI_APPLICATION = 'family_website.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'username$database_name',
-        'USER': 'username',
-        'PASSWORD': 'mysql_password',
-        'HOST': 'mysql_hostname',
-    }
-}
 
 DATABASES = {
     'default': {

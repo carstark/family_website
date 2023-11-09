@@ -22,9 +22,10 @@ import members.views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('vaalser_login/', admin.site.urls),
     path('', members.views.home, name='home'),
     path('impressum/', members.views.impressum, name='impressum'),
     path('datenschutz/', members.views.datenschutz, name='datenschutz'),
     path('blog/', include('blog.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
