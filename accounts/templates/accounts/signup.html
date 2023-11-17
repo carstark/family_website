@@ -5,11 +5,30 @@
 {% block content %}
 <main>
   <div class="container">
-
     <h1 class="text-center pt-4">SIGN UP</h1>
-    <p class="text-center">sign up</p>
-    <p align="justify">whatever</p>
-
+    <form method="POST" action="{% url 'signup' %}" class="text-center">
+      {% csrf_token %}
+      Username:
+      <br/>
+      <input type="text" name="username" />
+      <br/>
+      Password:
+      <br/>
+      <input type="password" name="password1" />
+      <br/>
+      Confirm Password:
+      <br/>
+      <input type="password" name="password2" />
+      <br/>
+      <input class="btn btn-primary my-2" type="submit" value="Sign Up!">
+    </form>
+    <h5 class="text-center pt-4">
+      {% if error %}
+      <br/>
+      {{ error }}
+      <br/>
+      {% endif %}
+    </h5>
   </div>
 </main>
 {% endblock %}
