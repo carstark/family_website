@@ -27,4 +27,5 @@ urlpatterns = [
     path('impressum/', members.views.impressum, name='impressum'),
     path('datenschutz/', members.views.datenschutz, name='datenschutz'),
     path('blog/', include('blog.urls')),
+    path('accounts/', include('accounts.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
