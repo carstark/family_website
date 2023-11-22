@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+  <div class="container">
+    <h1 class="text-justify pt-4">Tagebucheintrag</h1>
+    <h5 class="text-justify pt-4">
+      {% if error %}
+      <br/>
+      {{ error }}
+      <br/>
+      {% endif %}
+    </h5>
+    <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data" class="text-justify">
+      {% csrf_token %}
+      <br/>
+      Datum:
+      <input type="date" name="pub_date" />
+      <br/><br/>
+      Titel:
+      <input type="text" name="title" maxlength="64"/>
+      <br/><br/>
+      Text:
+      <input type="text" name="body"/>
+      <br/><br/>
+      URL:
+      <input type="url" name="url" />
+      <br/><br/>
+      Bild:<br/>
+      <input type="file" name="image" />
+      <br/><br/>
+      Autorenbildchen:<br/>
+      <input type="file" name="author_icon" />
+      <br/><br/>
+      <input class="btn btn-primary my-2" type="submit" value="Veröffentlichen!">
+    </form>
+  </div>
+</main>
+{% endblock %}
+
+</html>
