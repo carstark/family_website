@@ -35,7 +35,7 @@ def create(request):
             blog.author_icon = request.FILES['author_icon']
             blog.author = request.user
             blog.save()
-            return redirect('allblogs')
+            return redirect('/blog/' + str(blog.id))
         else:
             return render(request, 'blog/create.html', {'error': 'Alle Felder sind notwendig!'})
     else:
