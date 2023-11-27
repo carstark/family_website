@@ -13,15 +13,29 @@
     </div>
     {% for blog in blogs.all %}
 
-    <a href="{% url 'detail' blog.id %}">
-      <h3> {{ blog.title }} </h3>
-    </a>
-    {{ blog.pub_date }}
-    <br />
-    <img class="img-fluid" src="{{ blog.image.url }}" width="250" height="250">
-    <br />
-    <p> {{ blog.summary }} </p>
-
+    <div class="row pt-3">
+      <div class="col-2" onclick="window.location='{% url 'detail' blog.id %}';" style="cursor: pointer;">
+        <img src="{{ blog.image.url }}" class="img-fluid"/>
+      </div>
+      <div class="col-6" onclick="window.location='{% url 'detail' blog.id %}';" style="cursor: pointer;">
+        <h3> {{ blog.title }} </h3>
+        <p> {{ blog.summary }} </p>
+      </div>
+      <div class="col-4">
+        <a href="javascript:{document.getElementById('upvote{{ blog.id }}').submit()}">
+        <button class="btn btn-primary btn-lg btn-block">
+          <svg width="48" height="48" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15.25 14.25L12 10.75L8.75 14.25"/>
+          </svg>
+           Upvote {{ blog.votes_total }}
+        </button>
+      </a>
+      </div>
+    </div>
+    <form id="upvote{{ blog.id }}" method="POST" action="{% url 'upvote' blog.id %}">
+      {% csrf_token %}
+      <input type="hidden"/>
+    </form>
     {% endfor %}
   </section>
 </main>

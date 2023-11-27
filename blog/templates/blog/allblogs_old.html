@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+  <section class="py-0 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Vaalser Tagebuch</h1>
+        <p class="lead text-body-secondary">Chaos inklusive... </p>
+      </div>
+    </div>
+    {% for blog in blogs.all %}
+
+    <a href="{% url 'detail' blog.id %}">
+      <h3> {{ blog.title }} </h3>
+    </a>
+    {{ blog.pub_date }}
+    <br />
+    <img class="img-fluid" src="{{ blog.image.url }}" width="250" height="250">
+    <br />
+    <p> {{ blog.summary }} </p>
+
+    {% endfor %}
+  </section>
+</main>
+{% endblock %}
+
+</html>

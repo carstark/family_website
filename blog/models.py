@@ -18,9 +18,9 @@ class Blog(models.Model):
         return self.title
 
     def summary(self):
-        if len(self.body.split(" ")) < 15:
+        if len(self.body.split(" ")) < 50:
             # for when the body contains less than 15 words, it returns whatever is there
             return self.body
         else:
             # for when the body is longer than 15 words, it returns just the first 15
-            return " ".join(self.body.split(" ")[:15])+"..."
+            return " ".join(self.body.split(" ")[:50])+"..."
