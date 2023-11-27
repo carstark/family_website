@@ -40,3 +40,12 @@ def create(request):
             return render(request, 'blog/create.html', {'error': 'Alle Felder sind notwendig!'})
     else:
         return render(request, 'blog/create.html')
+
+
+def upvote(request, blog_id):
+    if request.method == 'POST':
+        detailblog = get_object_or_404(Blog, pk=blog_id)
+        detailblog.votes_total += 1
+        detailblog.save()
+        return redirect('/blog/' + str(detailblog.id))
+    return render(request, 'blog/detail.html', {'blog': detailblog})
