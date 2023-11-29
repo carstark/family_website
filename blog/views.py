@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
-from .models import Blog
+from .models import Blog, Vote
 
 
 def allblogs(request):
@@ -16,7 +16,7 @@ def detail(request, blog_id):
     return render(request, 'blog/detail.html', {'blog': detailblog})
 
 
-@login_required()
+@login_required(login_url="/accounts/signup")
 def create(request):
     if request.method == 'POST':
         if request.POST['title'] and request.POST['body'] and request.FILES['image']:
@@ -42,12 +42,16 @@ def create(request):
         return render(request, 'blog/create.html')
 
 
-@login_required()
+@login_required(login_url="/accounts/signup")
 def upvote(request, blog_id):
     detailblog = get_object_or_404(Blog, pk=blog_id)
     if request.method == 'POST':
-        detailblog.votes_total += 1
-        detailblog.save()
-        return redirect('/blog/' + str(detailblog.id))
-    else:
-        return render(request, 'blog/detail.html', {'blog': detailblog})
+        if detailblog.author == request.user:
+            return render(request, 'blog/detail.html', {'blog': detailblog, 'error': 'Author voted with entry!'})
+        elif Vote.objects.filter(blog=detailblog, author=request.user):
+            return render(request, 'blog/detail.html', {'blog': detailblog, 'error': 'You already voted!'})
+        else:
+            Vote(blog=detailblog, author=request.user).save()
+            detailblog.votes_total += 1
+            detailblog.save()
+            return redirect('/blog/' + str(blog_id))

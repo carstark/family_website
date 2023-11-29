@@ -24,3 +24,8 @@ class Blog(models.Model):
         else:
             # for when the body is longer than 15 words, it returns just the first 15
             return " ".join(self.body.split(" ")[:50])+"..."
+
+
+class Vote(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)

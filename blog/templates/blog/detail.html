@@ -33,6 +33,13 @@
            Upvote {{ blog.votes_total }}
         </button>
       </a>
+      <h5 class="text-left pt-1">
+        {% if error %}
+        <br/>
+        {{ error }}
+        <br/>
+        {% endif %}
+      </h5>
     </div>
   </div>
   <div class="row">
