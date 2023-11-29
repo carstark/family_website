@@ -15,23 +15,24 @@
     <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data" class="text-justify">
       {% csrf_token %}
       <br/>
-      Datum:
-      <input type="date" name="pub_date" />
+      <label for="pub_date">Datum:</label>
+      <input type="date" id="pub_date" name="pub_date" />
       <br/><br/>
-      Titel:
-      <input type="text" name="title" maxlength="64"/>
+      <label for="title">Titel:</label>
+      <input type="text" id="title" name="title" maxlength="64" placeholder="Kurz und knackig, bitte." size="48" required/>
       <br/><br/>
-      Text:
-      <input type="text" name="body"/>
+      <label for="body">Text:</label><br/>
+      <textarea id="body" name="body" rows="4" cols="50"
+                placeholder="Gerade so viel, dass ein unbefangener Leser es verstehen kann." required></textarea>
       <br/><br/>
-      URL:
-      <input type="url" name="url" />
+      <label for="url">URL:</label>
+      <input type="url" id="url" name="url" placeholder="Link zu Post oder Video?" size="48"/>
       <br/><br/>
-      Bild:<br/>
-      <input type="file" name="image" />
+      <label for="image">Bild:</label><br/>
+      <input type="file" id="image" name="image" required/>
       <br/><br/>
-      Autorenbildchen:<br/>
-      <input type="file" name="author_icon" />
+      <label for="author_icon">Autorenbildchen:</label><br/>
+      <input type="file" id="author_icon" name="author_icon"/>
       <br/><br/>
       <input class="btn btn-primary my-2" type="submit" value="Veröffentlichen!">
     </form>

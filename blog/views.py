@@ -21,19 +21,19 @@ def create(request):
     if request.method == 'POST':
         if request.POST['title'] and request.POST['body'] and request.FILES['image']:
             blog = Blog()
+            blog.title = request.POST['title']
+            blog.body = request.POST['body']
+            blog.image = request.FILES['image']
+            blog.author = request.user
             if request.POST['pub_date']:
                 blog.pub_date = request.POST['pub_date']
             else:
                 blog.pub_date = datetime.now().date()
-            blog.title = request.POST['title']
-            blog.body = request.POST['body']
             if request.POST['url']:
                 blog.url = request.POST['url']
             else:
                 blog.url = "https://nomenetomen.de"
-            blog.image = request.FILES['image']
             blog.author_icon = request.FILES['author_icon']
-            blog.author = request.user
             blog.save()
             return redirect('/blog/' + str(blog.id))
         else:
