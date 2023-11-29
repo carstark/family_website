@@ -5,18 +5,18 @@
 {% block content %}
 <main>
   <div class="row pt-3">
-    <div class="col-2">
+    <div class="col-2 text-center my-auto">
       <img src="{{ blog.author_icon.url }}" class="img-fluid"/>
     </div>
-    <div class="col-8 text-center">
+    <div class="col-8 text-center my-auto">
       <a href="{{ blog.url }}"><h1>{{ blog.title }}</h1></a><br/>
-      <h5 class="text-left pt-1">
+      <h5 class="text-left">
         {% if error %}
         {{ error }}
         {% endif %}
       </h5>
     </div>
-    <div class="col-2">
+    <div class="col-2 my-auto text-center">
       <a href="javascript:{document.getElementById('upvote').submit()}">
         <button class="btn btn-primary btn-md btn-block">
           <svg width="48" height="48" fill="none" viewBox="0 0 24 24">
@@ -45,7 +45,7 @@
   </div>
 
   <div class="row pt-3">
-    <div class="col-12">
+    <div class="col-12 text-center">
       <img src="{{ blog.image.url }}" class="img-fluid"/>
     </div>
   </div>

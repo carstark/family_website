@@ -14,14 +14,16 @@
     {% for blog in blogs.all %}
 
     <div class="row pt-3">
-      <div class="col-2" onclick="window.location='{% url 'detail' blog.id %}';" style="cursor: pointer;">
+      <div class="col-2 text-center my-auto" onclick="window.location='{% url 'detail' blog.id %}';" style="cursor: pointer;">
         <img src="{{ blog.image.url }}" class="img-fluid"/>
       </div>
-      <div class="col-8" onclick="window.location='{% url 'detail' blog.id %}';" style="cursor: pointer;">
+
+      <div class="col-8 text-center my-auto" onclick="window.location='{% url 'detail' blog.id %}';" style="cursor: pointer;">
         <h3> {{ blog.title }} </h3>
         <p> {{ blog.summary }} </p>
       </div>
-      <div class="col-2">
+
+      <div class="col-2 text-center my-auto">
         <a href="javascript:{document.getElementById('upvote{{ blog.id }}').submit()}">
         <button class="btn btn-primary btn-md btn-block">
           <svg width="48" height="48" fill="none" viewBox="0 0 24 24">
