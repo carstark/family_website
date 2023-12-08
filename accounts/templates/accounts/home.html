@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+  <section class="py-0 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Willkommen auf unserer ACCOUNT Seite!</h1>
+        <p class="lead text-body-secondary">Und wenn du was zu melden hast... </p>
+          <a href="mailto:cstarke75@gmail.com
+          ?subject=Meldung auf Schreib Uns!
+          &body=Hallo Vaalser," class="btn btn-primary my-2">Schreib Uns!</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-body-tertiary">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for user in users.all %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img class="card-img-top" src="">
+            <div class="card-body">
+              <h1 class="card-text text-center">{{ user.username }}</h1>
+              <p class="card-text text-center">{{ user.groups }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
+</html>

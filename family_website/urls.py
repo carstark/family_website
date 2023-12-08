@@ -19,11 +19,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 import members.views
+import accounts.views
 
 
 urlpatterns = [
     path('vaalser_login/', admin.site.urls),
-    path('', members.views.home, name='home'),
+    path('', accounts.views.home, name='home'),
     path('impressum/', members.views.impressum, name='impressum'),
     path('datenschutz/', members.views.datenschutz, name='datenschutz'),
     path('blog/', include('blog.urls')),

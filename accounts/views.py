@@ -40,3 +40,8 @@ def logout(request):
         # some browsers like Chrome may load get-requests in the background and hence log you out before you know it
         auth.logout(request)
         return redirect('home')
+
+
+def home(request):
+    users = User.objects
+    return render(request, 'accounts/home.html', {'users': users})
