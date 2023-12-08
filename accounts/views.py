@@ -43,5 +43,6 @@ def logout(request):
 
 
 def home(request):
-    users = User.objects
+    users = User.objects.all()[1:]
+    User.last_login
     return render(request, 'accounts/home.html', {'users': users})
