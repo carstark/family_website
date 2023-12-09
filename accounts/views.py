@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
+from blog.models import Blog, Vote
 
 
 def signup(request):
@@ -43,6 +44,17 @@ def logout(request):
 
 
 def home(request):
-    users = User.objects.all()[1:]
-    User.last_login
-    return render(request, 'accounts/home.html', {'users': users})
+    users = User.objects.all()#[1:]
+    creators = {}
+    for user in users:
+        username = user.username
+        joined = user.date_joined.date
+        last_login = user.last_login.date
+        upvotes = Vote.objects.all().filter(author=user).count()
+        blogs_created = Blog.objects.all().filter(author=user).count()
+        creators[username] = {'joined': joined,
+                              'last_login': last_login,
+                              'upvotes': upvotes,
+                              'blogs_created': blogs_created,
+                              }
+    return render(request, 'accounts/home.html', {'creators': creators})

@@ -20,14 +20,16 @@
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for user in users.all %}
+        {% for username, userinfo in creators.items %}
         <div class="col">
           <div class="card shadow-sm">
             <img class="card-img-top" src="">
             <div class="card-body">
-              <h1 class="card-text text-center">{{ user.username }}</h1>
-              <p class="card-text text-center">joined: {{ user.date_joined.date }}</p>
-              <p class="card-text text-center">last login: {{ user.last_login.date }}</p>
+              <h1 class="card-text text-center">{{ username }}</h1>
+              <p class="card-text text-center">Joined: {{ userinfo.joined }}</p>
+              <p class="card-text text-center">Last Login: {{ userinfo.last_login }}</p>
+              <p class="card-text text-center">Upvotes: {{ userinfo.upvotes }}</p>
+              <p class="card-text text-center">Blogs created: {{ userinfo.blogs_created }}</p>
             </div>
           </div>
         </div>
