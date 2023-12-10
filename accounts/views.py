@@ -52,9 +52,17 @@ def home(request):
         last_login = user.last_login.date
         upvotes = Vote.objects.all().filter(author=user).count()
         blogs_created = Blog.objects.all().filter(author=user).count()
+        if blogs_created != 0:
+            latest_blog = Blog.objects.all().filter(author=user)[blogs_created-1]
+            author_icon = latest_blog.author_icon
+            print("IF:", author_icon)
+        else:
+            author_icon = "media/vaalser.png"
+            print("ELSE:", author_icon)
         creators[username] = {'joined': joined,
                               'last_login': last_login,
                               'upvotes': upvotes,
                               'blogs_created': blogs_created,
+                              'author_icon': author_icon,
                               }
     return render(request, 'accounts/home.html', {'creators': creators})

@@ -19,12 +19,13 @@ def detail(request, blog_id):
 @login_required(login_url="/accounts/signup")
 def create(request):
     if request.method == 'POST':
-        if request.POST['title'] and request.POST['body'] and request.FILES['image']:
+        if request.POST['title'] and request.POST['body'] and request.FILES['image'] and request.FILES['author_icon']:
             blog = Blog()
             blog.title = request.POST['title']
             blog.body = request.POST['body']
             blog.image = request.FILES['image']
             blog.author = request.user
+            blog.author_icon = request.FILES['author_icon']
             if request.POST['pub_date']:
                 blog.pub_date = request.POST['pub_date']
             else:
@@ -33,7 +34,6 @@ def create(request):
                 blog.url = request.POST['url']
             else:
                 blog.url = "https://nomenetomen.de"
-            blog.author_icon = request.FILES['author_icon']
             blog.save()
             return redirect('/blog/' + str(blog.id))
         else:

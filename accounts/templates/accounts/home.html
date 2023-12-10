@@ -23,7 +23,7 @@
         {% for username, userinfo in creators.items %}
         <div class="col">
           <div class="card shadow-sm">
-            <img class="card-img-top" src="">
+            <img class="card-img-top" src="{{ userinfo.author_icon.url }}">
             <div class="card-body">
               <h1 class="card-text text-center">{{ username }}</h1>
               <p class="card-text text-center">Joined: {{ userinfo.joined }}</p>
