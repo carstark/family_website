@@ -55,10 +55,8 @@ def home(request):
         if blogs_created != 0:
             latest_blog = Blog.objects.all().filter(author=user)[blogs_created-1]
             author_icon = latest_blog.author_icon
-            print("IF:", author_icon)
         else:
-            author_icon = "media/vaalser.png"
-            print("ELSE:", author_icon)
+            author_icon = None
         creators[username] = {'joined': joined,
                               'last_login': last_login,
                               'upvotes': upvotes,

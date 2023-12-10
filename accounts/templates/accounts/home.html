@@ -23,7 +23,11 @@
         {% for username, userinfo in creators.items %}
         <div class="col">
           <div class="card shadow-sm">
+            {% if userinfo.author_icon == None %}
+            <img class="card-img-top" src="media/images/anonymous.png">
+            {% else %}
             <img class="card-img-top" src="{{ userinfo.author_icon.url }}">
+            {% endif %}
             <div class="card-body">
               <h1 class="card-text text-center">{{ username }}</h1>
               <p class="card-text text-center">Joined: {{ userinfo.joined }}</p>
