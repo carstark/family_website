@@ -23,6 +23,9 @@
       <a class="navbar-brand my-auto" href="{% url 'home' %}">
         <img src="{% static 'vaalser.png' %}" height="54" width="54" class="img-fluid my-auto"/>
         <font size="+2">Die Vaalser</font>
+        {% if user.is_authenticated %}
+        <font size="+2">begrüßen {{ user }}!</font>
+        {% endif %}
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
