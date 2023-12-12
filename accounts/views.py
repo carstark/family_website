@@ -44,7 +44,7 @@ def logout(request):
 
 
 def home(request):
-    users = User.objects.all()#[1:]
+    users = User.objects.all()[1:]
     creators = {}
     for user in users:
         username = user.username
