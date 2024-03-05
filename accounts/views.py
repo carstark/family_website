@@ -4,6 +4,9 @@ from django.contrib import auth
 from blog.models import Blog, Vote
 
 
+given_username = "Mr.X"
+
+
 def signup(request):
     if request.method == 'POST':
         # user has info and wants an account now, i.e. post request
@@ -12,7 +15,9 @@ def signup(request):
                 user = User.objects.get(username=request.POST['username'])
                 return render(request, 'accounts/signup.html', {'error': 'Username has already been taken!'})
             except User.DoesNotExist:
-                user = User.objects.create_user(username=request.POST['username'], password=request.POST['password1'])
+                user = User.objects.create_user(username=request.POST['username'],
+                                                password=request.POST['password1'],
+                                                email=request.POST['email1'])
                 auth.login(request, user=user)
                 return redirect('home')
         else:
@@ -34,6 +39,45 @@ def login(request):
     else:
         # user wants to enter info, i.e. get request
         return render(request, 'accounts/login.html')
+
+
+def forgotten(request):
+    global given_username
+    if request.method == 'POST':
+        if request.POST['username'] != "":
+            try:
+                user = User.objects.get(username=request.POST['username'])
+                given_username = request.POST['username']
+                return render(request, 'accounts/reset.html', {'given_username': given_username})
+            except User.DoesNotExist:
+                return render(request, 'accounts/forgotten.html', {'error': 'Username does not exist!'})
+        else:
+            return render(request, 'accounts/forgotten.html', {'error': 'What Username?!'})
+    else:
+        # user wants to enter info, i.e. get request
+        return render(request, 'accounts/forgotten.html')
+
+
+def reset(request):
+    global given_username
+    if request.method == 'POST':
+        # user has info and wants an account now, i.e. post request
+        if request.POST['password1'] == request.POST['password2']:
+            if request.POST['key'] == "007":
+                user = User.objects.get(username=given_username)
+                user.set_password(request.POST['password1'])
+                user.save()
+                auth.login(request, user=user)
+                return redirect('home')
+            else:
+                return render(request, 'accounts/reset.html', {'error': 'Key is wrong!',
+                                                               'given_username': given_username})
+        else:
+            return render(request, 'accounts/reset.html', {'error': 'Passwords must match!',
+                                                           'given_username': given_username})
+    else:
+        # user wants to enter info, i.e. get request
+        return render(request, 'accounts/reset.html')
 
 
 def logout(request):

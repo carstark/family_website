@@ -18,6 +18,9 @@
       <br/>
       <input class="btn btn-primary my-2" type="submit" value="Login"/>
     </form>
+    <div class="text-center my-auto" onclick="window.location='{% url 'forgotten' %}';" style="cursor: pointer;">
+        <p> Password forgotten? </p>
+    </div>
     <h5 class="text-center pt-4">
       {% if error %}
       <br/>

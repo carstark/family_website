@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+  <div class="container">
+    <h1 class="text-center pt-4">Forgotten Password</h1>
+    <form method="POST" action="{% url 'forgotten' %}" class="text-center">
+      {% csrf_token %}
+      Username:
+      <br/>
+      <input type="text" name="username"/>
+      <br/>
+      <input class="btn btn-primary my-2" type="submit" value="Send reset-key to user email"/>
+    </form>
+    <h5 class="text-center pt-4">
+      {% if error %}
+      <br/>
+      {{ error }}
+      <br/>
+      {% endif %}
+    </h5>
+  </div>
+</main>
+{% endblock %}
+
+</html>
