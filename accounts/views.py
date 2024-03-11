@@ -8,6 +8,10 @@ import random
 import string
 from datetime import datetime
 
+given_username = "Mr.X"
+sent_key = ""
+sent_time = datetime.now()
+
 
 def signup(request):
     if request.method == 'POST':
@@ -64,16 +68,16 @@ def forgotten(request):
 def send_key(name, email, request):
     global sent_key, sent_time
     try:
-        s = smtplib.SMTP(host=host)
-        s.starttls()
-        s.login(uname, pword)
+        s = smtplib.SMTP_SSL(host=EMAIL_HOST, port=EMAIL_PORT)
+        s.ehlo()
+        s.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
     except Exception as e:
         print(f"Internet problem --> {e}")
         return render(request, 'accounts/forgotten.html', {'error': f'{e} -> Internet problem!?'})
 
     try:
         msg = EmailMessage()
-        msg["From"] = uname
+        msg["From"] = EMAIL_HOST_USER
         msg["Subject"] = f"{name}'s One-Time-Key is..."
         msg["Bcc"] = email
         sent_key = ''.join(random.choices(string.digits, k=4))
