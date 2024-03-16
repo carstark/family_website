@@ -95,7 +95,7 @@ def reset(request):
     global given_username, sent_key, sent_time
     if request.method == 'POST':
         # user has info and wants an account now, i.e. post request
-        if (datetime.now() - sent_time).total_seconds() < 100:
+        if (datetime.now() - sent_time).total_seconds() < 600:
             if request.POST['password1'] == request.POST['password2']:
                 if request.POST['key'] == sent_key:
                     user = User.objects.get(username=given_username)
